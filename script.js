@@ -1,3 +1,4 @@
+//weather api key
 const apiKey = 'bf25780592263dd7adee5ff588bb890b';
 const searchBtn = document.getElementById('search-btn');
 const cityInput = document.getElementById('city-input');
@@ -10,16 +11,18 @@ document.getElementById('close-modal').addEventListener('click', () => {
 });
 let recentCities = [];
 
+// weather data
 async function getWeatherData(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
     return response.json();
 }
-
+// forecast Data
 async function getForecastData(city) {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`);
     return response.json();
 }
 
+ // update_recent_searches
 function updateRecentSearches(city) {
     if (!recentCities.includes(city)) {
         recentCities.push(city);
@@ -30,6 +33,7 @@ function updateRecentSearches(city) {
     displaySuggestions();
 }
 
+//Display suggestion
 function displaySuggestions() {
     suggestions.innerHTML = recentCities.map(city => `
         <div class="cursor-pointer hover:bg-blue-100 p-2" onclick="selectSuggestion('${city}')">${city}</div>
@@ -63,6 +67,7 @@ function displayTodayWeather(data) {
 `;
 }
 
+// weather icon
 function getWeatherIcon(condition) {
     switch (condition) {
         case 'Clear':
@@ -84,6 +89,7 @@ function getWeatherIcon(condition) {
     }
 }
 
+//Display forecast
 function displayForecast(forecastData) {
     forecastContainer.innerHTML = '';
     const uniqueDates = new Set();
