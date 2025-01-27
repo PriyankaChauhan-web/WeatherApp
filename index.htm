@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" />
+
+</head>
+<body class="bg-blue-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center">Weather App</h1>
+        <div class="flex justify-center mt-6">
+            <div class="flex justify-center mt-6">
+                <input type="text" id="city-input" class="border-2 border-gray-300 p-2 rounded-l" placeholder="Enter city name" />
+                <button id="search-btn" class="bg-blue-500 text-white p-2 rounded-r">Search</button>
+            </div>
+            <div id="suggestions" class="mt-4 text-center"></div>
+        </div>
+
+        <div id="weather-today" class="mt-6 text-center"></div>
+        <div id="forecast" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"></div>
+        <div id="recent-searches" class="mt-6"></div>
+    </div>
+<!-- Modal -->
+<div id="forecast-modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white rounded-lg p-6 w-11/12 max-w-md">
+        <h2 id="modal-date" class="text-2xl mb-4"></h2>
+        <div id="modal-details"></div>
+        <button id="close-modal" class="mt-4 bg-red-500 text-white px-4 py-2 rounded">Close</button>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
